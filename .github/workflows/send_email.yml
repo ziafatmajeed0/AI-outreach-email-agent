@@ -1,0 +1,34 @@
+name: Send Outreach Email
+
+on:
+  schedule:
+    # Run at 5:15 AM PKT (00:15 UTC)
+    - cron: '15 0 * * 1,3,5,0'
+
+    # Run at 5:30 AM PKT (00:30 UTC)
+    - cron: '30 0 * * 1,3,5,0'
+
+  workflow_dispatch:  # allow manual run
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: pip install pandas openpyxl
+
+    - name: Run script
+      env:
+        GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+      run: |
+        python email_sender.py
