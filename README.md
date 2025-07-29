@@ -1,5 +1,6 @@
 
 # 🤖 AI Outreach Email Agent
+![AI Outreach Email Agent](social_preview.jpg)
 
 This project is a fully automated email outreach system that sends personalized business proposals to a list of contacts — **on your schedule, automatically, and at scale**.
 
